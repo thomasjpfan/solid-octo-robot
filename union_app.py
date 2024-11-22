@@ -5,12 +5,12 @@ image_spec = ImageSpec(
     name="us-migration",
     requirements="requirements.txt",
     registry="ghcr.io/thomasjpfan",
-    copy=["dist/union_runtime-0.1.0b1-py3-none-any.whl"],
-    commands=["uv pip install /root/dist/union_runtime-0.1.0b1-py3-none-any.whl"],
+    copy=["dist/union_runtime-0.1.0b2-py3-none-any.whl"],
+    commands=["uv pip install /root/dist/union_runtime-0.1.0b2-py3-none-any.whl"],
 )
 
 app = App(
-    name="us-population-2",
+    name="us-population-3",
     container_image=image_spec,
     limits=Resources(cpu="2", mem="2Gi"),
     command=[
@@ -27,4 +27,6 @@ app = App(
         "data_munging.py",
         "data/*.csv",
     ],
+    min_replicas=0,
+    max_replicas=1,
 )
