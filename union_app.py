@@ -10,7 +10,7 @@ image_spec = ImageSpec(
 )
 
 app = App(
-    name="us-population-3",
+    name="new-us-population-3",
     container_image=image_spec,
     limits=Resources(cpu="2", mem="2Gi"),
     command=[
@@ -27,6 +27,6 @@ app = App(
         "data_munging.py",
         "data/*.csv",
     ],
-    min_replicas=0,
+    min_replicas=1,
     max_replicas=1,
 )
